@@ -1,6 +1,13 @@
 *{
-    margin: 0;
+    margin: 5;
 }
 .menu>button{
-    color: white;
+    color: black;
+    background-color: aqua;
+}
+.button>.submit>input{
+        background-color: greenyellow;
+}
+.button{
+     
 }
