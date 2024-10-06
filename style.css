@@ -1,13 +1,44 @@
 *{
-    margin: 5;
+    position: relative;
+    max-width: 500px;
+    margin: auto;
 }
-.menu>button{
+.home>button{
     color: black;
-    background-color: aqua;
+    background-color: rgb(246, 250, 30);
+    left: 310px;
+    top: 15px;
 }
 .button>.submit>input{
-        background-color: greenyellow;
+    background-color: greenyellow;
+    bottom: 65px;
+    left: 150px;
+    width: 80px;
+
 }
-.button{
-     
+.button>.user{
+    background-color: rgb(20, 220, 255);
+    width: 250px;
+    height: 150px;
+    padding: 50px;
+    margin: 20px;
 }
+.button>.user>input{
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+    left: 9px;
+    bottom: 10px;
+}
+.text{
+    font-size: 30px;
+    left: 35px;
+}
+.flex-container {
+    display: flex;
+    background-color: #f1f1f1;
+    margin: 5px;
+    padding: 10px;
+    font-size: 20px;
+    width: 350px;
+  }
