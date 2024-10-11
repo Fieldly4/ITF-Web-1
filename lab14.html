@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style_lab14.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <center>
+        <div class="name">
+            <h1 id="username"></h1>
+        </div>
+        <div class="circle">
+            <div id="image" style="position: relative; height:183px ; width:183px ; background-color:lightblue; border-radius: 60%; object-fit: cover; background-image: url();"></div>
+            <div style="position: relative; height:30px ; width:30px ; background-color:red; border-radius: 60%; display: flex; bottom: 30px ; left: 50px;"></div>
+        </div>
+        <div class="insert">
+            <div class="username">
+                <label for="">Set the username</label> <input type="text" placeholder="Enter Username" id="inputname"> <button onclick="setusername()">Set</button>
+            </div>
+            <div class="image">
+                <label for="">Set the profile image URL</label> <input type="text" placeholder="Enter Image URL" id="inputimage"> <button onclick="setimage()">Set</button>
+            </div>
+
+            <div class="phone">
+                <h1>Phone Number List</h1>
+            </div>
+            <div class="insert">
+                <div>
+                    <input type="text" placeholder="Name" style="width: 250px;" id="phonename">
+                    <input type="text" placeholder="Tel" style="width: 250px;" id="phonetel">
+                    <button onclick="addphone()">Add</button>
+                    <button>Export</button>
+                </div>
+                <table id="table">
+                    <tr>
+                        <th id="count"></th>
+                        <th id="tablename"></th>
+                        <th id="tabletel"></th>
+                    </tr>
+                </table>
+            </div>
+    </center>
+    <script>
+        const username = document.getElementById("username");
+        const inputname = document.getElementById("inputname");
+        const inputimage = document.getElementById("inputimage");
+        const phonename = document.getElementById("phonename")
+        const phonetel = document.getElementById("phonetel")
+        let num = 1
+
+        username.textContent = "Thanakorn Phopan 67070040";
+        image.style.backgroundImage = "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_FWF2judaujT30K9sMf-tZFhMWpgP6xCemw&s)";
+
+        function setusername(){
+            username.textContent = inputname.value;
+            console.log(inputname.value)
+        };
+
+        function setimage(){
+            image.style.backgroundImage = "url(" + inputimage.value + ")";
+            console.log(inputimage.value)
+        };
+        function addphone(){
+            count.textContent = num;
+            tablename.textContent = phonename.value;
+            tabletel.textContent = phonetel.value;
+            console.log(num);
+            num = num+1;
+            //array.push สร้าง array มาใส่ object แทน ขก.ทำแล้ว
+        };
+    </script>
+</body>
+
+</html>
+<!-- function saveCSV() {
+    const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", "data.csv");
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+}; -->
