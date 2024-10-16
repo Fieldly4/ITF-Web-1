@@ -42,7 +42,8 @@
                             <th>Phone Number</th>
                         </tr>
                     </thead>
-                    <tbody class="tablephone" id="table">
+                    <tbody>
+
                     </tbody>
                 </table>
             </div>
@@ -51,8 +52,8 @@
         const username = document.getElementById("username");
         const inputname = document.getElementById("inputname");
         const inputimage = document.getElementById("inputimage");
-        const phonename = document.getElementById("phonename");
-        const phonetel = document.getElementById("phonenumber");
+        const itemTableBody = document.getElementById('table').getElementsByTagName('tbody')[0];
+        const items = [];
         let num = 1;
 
         username.textContent = "Thanakorn Phopan 67070040";
@@ -61,31 +62,51 @@
         function setusername(){
             username.textContent = inputname.value;
             console.log(inputname.value);
+            inputname.value = "";
         };
 
         function setimage(){
             image.style.backgroundImage = "url(" + inputimage.value + ")";
             console.log(inputimage.value);
+            inputimage.value = "";
         };
         function addphone(){
-            const tableBody = document.getElementById('table');
-            const newRow = document.createElement('tr');
-            const newName = document.createElement('td');
-            const newNum = document.createElement('td');
-            const newNumber = document.createElement('td');
-            newNum.textContent = num;
-            newNumber.textContent = phonetel.value;
-            newName.textContent = phonename.value;
-            newRow.appendChild(newNum);
-            newRow.appendChild(newNumber);
-            newRow.appendChild(newName);
-            tableBody.appendChild(newRow);
+            event.preventDefault();
+
+            const itemName = document.getElementById('phonename').value;
+            const itemValue = document.getElementById('phonenumber').value;
+            const count = num ;
+
+            const newItem = {
+                count: count,
+                name: itemName,
+                value: itemValue
+            };
+
+            items.push(newItem);
+
             phonename.value = '';
-            phonetel.value = '';
-            num = num+1;
+            phonenumber.value = '';
+
+            addItemToTable(newItem);
         };
+
+        function addItemToTable(item) {
+        const newRow = itemTableBody.insertRow();
+
+        const cellNum = newRow.insertCell(0);
+        const cellName = newRow.insertCell(1);
+        const cellValue = newRow.insertCell(2);
+
+        num = num+1
+        cellNum.textContent = item.count;
+        cellName.textContent = item.name;
+        cellValue.textContent = item.value;
+        console.log(items);
+        }
+
         function exported(){
-            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const csvContent = items.map(row => row.join(",")).join("\n"); // Convert array to CSV string
             const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
