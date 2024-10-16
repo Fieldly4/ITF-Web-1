@@ -30,16 +30,20 @@
             <div class="insert">
                 <div>
                     <input type="text" placeholder="Name" style="width: 250px;" id="phonename">
-                    <input type="text" placeholder="Tel" style="width: 250px;" id="phonetel">
+                    <input type="text" placeholder="Tel" style="width: 250px;" id="phonenumber">
                     <button onclick="addphone()">Add</button>
                     <button>Export</button>
                 </div>
                 <table id="table">
-                    <tr>
-                        <th id="count"></th>
-                        <th id="tablename"></th>
-                        <th id="tabletel"></th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablephone" id="table">
+                    </tbody>
                 </table>
             </div>
     </center>
@@ -47,29 +51,38 @@
         const username = document.getElementById("username");
         const inputname = document.getElementById("inputname");
         const inputimage = document.getElementById("inputimage");
-        const phonename = document.getElementById("phonename")
-        const phonetel = document.getElementById("phonetel")
-        let num = 1
+        const phonename = document.getElementById("phonename");
+        const phonetel = document.getElementById("phonenumber");
+        let num = 1;
 
         username.textContent = "Thanakorn Phopan 67070040";
         image.style.backgroundImage = "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_FWF2judaujT30K9sMf-tZFhMWpgP6xCemw&s)";
 
         function setusername(){
             username.textContent = inputname.value;
-            console.log(inputname.value)
+            console.log(inputname.value);
         };
 
         function setimage(){
             image.style.backgroundImage = "url(" + inputimage.value + ")";
-            console.log(inputimage.value)
+            console.log(inputimage.value);
         };
         function addphone(){
-            count.textContent = num;
-            tablename.textContent = phonename.value;
-            tabletel.textContent = phonetel.value;
-            console.log(num);
+            const tableBody = document.getElementById('table');
+            const newRow = document.createElement('tr');
+            const newName = document.createElement('td');
+            const newNum = document.createElement('td');
+            const newNumber = document.createElement('td');
+            newNum.textContent = num;
+            newNumber.textContent = phonetel.value;
+            newName.textContent = phonename.value;
+            newRow.appendChild(newNum);
+            newRow.appendChild(newNumber);
+            newRow.appendChild(newName);
+            tableBody.appendChild(newRow);
+            phonename.value = '';
+            phonetel.value = '';
             num = num+1;
-            //array.push สร้าง array มาใส่ object แทน ขก.ทำแล้ว
         };
     </script>
 </body>
